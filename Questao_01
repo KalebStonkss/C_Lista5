@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main() {
+    int x = 10;
+    int y = 20;
+    int *ptr_x = &x;
+    int *ptr_y = &y;
+    int soma = x + y;
+    int *ptr_soma = &soma;
+    
+    printf("Soma dos dois números: %d \n",soma);
+    printf("Endereço da soma: %p",ptr_soma);
+    
+    return 0;
+}
