@@ -1,0 +1,24 @@
+#include <stdio.h>
+void menorr(int *num,int *men){
+    while(*num != -1){
+        if(*num<*men){
+            *men = *num;
+            printf("Menor número atual = %d \n",*men);
+        }
+        else{
+            printf("Número maior que o menor número, digite outro número menor que o menor número(Digite -1 para finalizar o programa) \n");
+            scanf("%d",num);
+        }
+    }
+}
+int main() {
+    int numero;
+    int menor = numero;
+    int *num = &numero;
+    int *men = &menor;
+    puts("Escreva algum número: \n");
+    scanf("%d",num);
+    menorr(num,men);
+    printf("O menor número foi: %d \n",*men);
+    return 0;
+}
