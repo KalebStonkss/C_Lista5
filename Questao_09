@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define TAM 100
+#define MX 50
+void bolha(int *p_num,int *p_n,int *p_dois, int *p_flag){
+    for(int i = 0; i<TAM; i++){
+        p_num[i] = *p_n + rand() % (*p_dois - *p_n + 1);
+    }
+    printf("Valores atuais: \n");
+    for(int i = 0; i<TAM;i++){
+        printf("|%2d| \t",p_num[i]);
+    }
+    for(int k = 0;k<TAM;k++){
+        *p_flag = 1;
+        for(int i = 0;i<TAM-1;i++){
+            if(p_num[i] > p_num[i+1]){
+                p_num[i] = p_num[i]^p_num[i+1];
+                p_num[i+1] = p_num[i]^p_num[i+1];
+                p_num[i] = p_num[i]^p_num[i+1];
+                *p_flag = 0;
+            }
+        }
+        if(*p_flag){
+            break;
+        }
+    }
+    printf("Ordenado com bubble sort : \n");
+    for(int i = 0;i<TAM;i++){
+        printf("|%2d| \t",p_num[i]);
+        printf("\n");
+    }
+    free(p_num);
+}
+int main() {
+    int n,n_dois,flag;
+    int *p_num = (int *)malloc(TAM * sizeof(int));
+    int *p_n = &n;
+    int *p_dois = &n_dois;
+    int *p_flag = &flag;
+    
+    puts("Digite o primeiro número para o intervalo desejado de números para o vetor, tipo (7-16,etc...)\n");
+    scanf("%d",p_n);
+    puts("Agora para o último número do intervalo: \n");
+    scanf("%d",p_dois);
+    srand(time(NULL));
+    bolha(p_num,p_n,p_dois,p_flag);
+    
+    return 0;
+}
