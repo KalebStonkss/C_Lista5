@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 100
+int main() {
+    char *algo = (char *)malloc(TAM * sizeof(char));
+    if(algo == NULL){
+        printf("Erro de alocação de memória \n");
+        return 1;
+    }
+    char amais;
+    char *p_amais = &amais;
+    int achou = 0;
+    puts("Digite algum nome \n");
+    fgets(algo,TAM,stdin);
+    algo[strcspn(algo,"\n")] = '\0';
+    puts("Agora digite um caractere qualquer \n");
+    scanf(" %c",p_amais);
+    p_amais[strcspn(p_amais,"\n")] = '\0';
+    for(int i = 0;i<TAM;i++){
+        if(algo[i] == *p_amais){
+            achou = 1;
+            break;
+        }
+    }
+    if(achou){
+        printf("O caractere escolhido está na string! \n");
+    }
+    else{
+        printf("O caractere escolhido não está na string. \n");
+    }
+    free(algo);
+    return 0;
+}
