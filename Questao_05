@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM 50
+size_t tamString(const char *tam){
+    const char *p_tam = tam;
+    while(*p_tam) p_tam++;
+    return p_tam - tam;
+}
+int main() {
+    char nome[TAM];
+    puts("Digite alguma coisa: \n");
+    fgets(nome,TAM,stdin);
+    nome[strcspn(nome,"\n")] = '\0';
+    printf("Nome = %s \n",nome);
+    size_t tamanho = tamString(nome);
+    printf("Tamanho = %zu",tamanho);
+}
