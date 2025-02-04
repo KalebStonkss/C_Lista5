@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 10
+int main() {
+    int *num = (int *)malloc(TAM * sizeof(int));
+    if(num == NULL){
+        printf("Erro de alocação de memória \n");
+        return 1;
+    }
+    for(int i = 0;i<TAM;i++){
+        puts("Digite algum valor: ");
+        scanf("%d",&num[i]);
+    }
+    for(int i = 0;i<TAM;i++){
+        printf("Valor na posição %d = |%d|, Endereço na posição %d = %p\n",i,num[i],i,(num+i));
+    }
+    free(num);
+    return 0;
+}
+//Resultados para int
+//Valor na posição 0 = |5|, Endereço na posição 0 = 0x206502a0
+//Valor na posição 1 = |4|, Endereço na posição 1 = 0x206502a4
+//Valor na posição 2 = |4|, Endereço na posição 2 = 0x206502a8
+//Valor na posição 3 = |7|, Endereço na posição 3 = 0x206502ac
+//Valor na posição 4 = |6|, Endereço na posição 4 = 0x206502b0
+//Valor na posição 5 = |7|, Endereço na posição 5 = 0x206502b4
+//Valor na posição 6 = |4|, Endereço na posição 6 = 0x206502b8
+//Valor na posição 7 = |8|, Endereço na posição 7 = 0x206502bc
+//Valor na posição 8 = |5|, Endereço na posição 8 = 0x206502c0
+//Valor na posição 9 = |3|, Endereço na posição 9 = 0x206502c4
+
+//Resultados para float
+//Valor na posição 0 = |6.00|, Endereço na posição 0 = 0x123722a0
+//Valor na posição 1 = |5.00|, Endereço na posição 1 = 0x123722a4
+//Valor na posição 2 = |3.00|, Endereço na posição 2 = 0x123722a8
+//Valor na posição 3 = |7.00|, Endereço na posição 3 = 0x123722ac
+//Valor na posição 4 = |8.00|, Endereço na posição 4 = 0x123722b0
+//Valor na posição 5 = |4.00|, Endereço na posição 5 = 0x123722b4
+//Valor na posição 6 = |2.00|, Endereço na posição 6 = 0x123722b8
+//Valor na posição 7 = |5.00|, Endereço na posição 7 = 0x123722bc
+//Valor na posição 8 = |8.00|, Endereço na posição 8 = 0x123722c0
+//Valor na posição 9 = |5.00|, Endereço na posição 9 = 0x123722c4
+
+//Resultados para char
+//Valor na posição 0 = |f|, Endereço na posição 0 = 0x42292a0
+//Valor na posição 1 = |a|, Endereço na posição 1 = 0x42292a1
+//Valor na posição 2 = |l|, Endereço na posição 2 = 0x42292a2
+//Valor na posição 3 = |a|, Endereço na posição 3 = 0x42292a3
+//Valor na posição 4 = |g|, Endereço na posição 4 = 0x42292a4
+//Valor na posição 5 = |a|, Endereço na posição 5 = 0x42292a5
+//Valor na posição 6 = |l|, Endereço na posição 6 = 0x42292a6
+//Valor na posição 7 = |e|, Endereço na posição 7 = 0x42292a7
+//Valor na posição 8 = |r|, Endereço na posição 8 = 0x42292a8
+//Valor na posição 9 = |a|, Endereço na posição 9 = 0x42292a9
+
+//Com esses resultados, percebe-se que o sistema aloca diferentes seções de memória para cada tipo de dado, assim como, dependendo do tipo de cada dado, a distância entre dados do mesmo tipo segue um padrão, como nos dados do tipo int e float, onde o endereço é alocado de 4 em 4 bytes, já para o char, de 1 em 1 byte.
