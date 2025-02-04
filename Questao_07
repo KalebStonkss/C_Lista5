@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM 50
+void somaString(char *destino,const char *origem){
+    while(*destino) destino++;
+    while(*destino++ = *origem++);
+}
+int main() {
+    char nome[TAM];
+    char nome_dois[TAM];
+    puts("Digite alguma coisa: \n");
+    fgets(nome,TAM,stdin);
+    puts("Digite alguma outra coisa: \n");
+    fgets(nome_dois,TAM,stdin);
+    nome[strcspn(nome,"\n")] = '\0';
+    nome_dois[strcspn(nome_dois,"\n")] = '\0';
+    printf("Nome 1 = %s \n",nome);
+    printf("Nome 2 = %s \n",nome_dois);
+    somaString(nome,nome_dois);
+    printf("String concatenada = %s",nome);
+    return 0;
+}
