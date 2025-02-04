@@ -1,0 +1,14 @@
+#include <stdio.h>
+#define TAM 50
+void copiaString(char *destino,const char *origem){
+    while(*destino++ = *origem++);
+}
+int main() {
+    char nome[TAM];
+    char nome_dois[TAM];
+    puts("Digite alguma coisa: \n");
+    fgets(nome,TAM,stdin);
+    printf("Nome = %s \n",nome);
+    copiaString(nome_dois,nome);
+    printf("String copiada de nome = %s",nome_dois);
+}
