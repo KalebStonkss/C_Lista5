@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define TAM 10
+#define TAM 14
 int main() {
     int max;
     int *mx = &max;
@@ -10,7 +10,7 @@ int main() {
     int *x = (int *)malloc(TAM * sizeof(int));
     int *f = (int *)malloc(*mx * sizeof(int));
     srand(time(NULL));
-    for(int i = 0;i<TAM;i++){
+    for(int i = 0;i<*mx;i++){
         f[i] = 0;
     }
     for(int i = 0; i<TAM;i++){
