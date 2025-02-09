@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define TAM 10
+int main() {
+    int max;
+    int *mx = &max;
+    int *x = (int *)malloc(TAM * sizeof(int));
+    int *y = (int *)malloc(TAM * sizeof(int));
+    int r;
+    int *pr = &r;
+    int **m = (int **)malloc(TAM * sizeof(int *));
+    for(int i=0;i<TAM;i++){
+        m[i] = (int *)calloc(TAM,sizeof(int));
+    }
+    puts("Digite o valor máximo do intervalo: \n");
+    scanf("%d",mx);
+    srand(time(NULL));
+    for(int i = 0;i<TAM;i++){
+        x[i] = rand() % *mx;
+        *pr = rand() % 10;
+        if(*pr == 0){
+            *pr = *pr + 1;
+        }
+        printf("R aleatório gerado: %d\n",*pr);
+        if(*pr > 0 && *pr <= 3){
+            y[i] = x[i];
+        }
+        else if(*pr > 3 && *pr <= 5){
+            y[i] = x[i]-1;
+        }
+        else if(*pr > 5 && *pr <= 7){
+            y[i] = x[i]+1;
+        }
+        else if(*pr > 7 && *pr <= 9){
+            y[i] = x[i]-2;
+        }
+        else if(*pr > 9 && *pr <= 10){
+            y[i] = x[i]+2;
+        }
+        if(y[i] >= *mx){
+            y[i] = *mx-1;
+        }
+        else if(y[i] < 0){
+            y[i] = 0;
+        }
+    }
+    printf("\n");
+    printf("Vetor X: \n");
+    for(int i =0;i<TAM;i++){
+        printf("|%d| ",x[i]);
+    }
+    printf("\nVetor Y: \n");
+    for(int i =0;i<TAM;i++){
+        printf("|%d| ",y[i]);
+    }
+    printf("\n");
+    printf("Matriz total preenchida com as contagens");
+    printf("\n");
+    for(int i=0;i<TAM;i++){
+        if(x[i] < TAM && y[i] < TAM){
+            m[x[i]][y[i]]++;
+        }
+    }
+    for(int i=0;i<TAM;i++){
+        for(int j=0;j<TAM;j++){
+            printf("|%d|\t",m[i][j]);
+        }
+        printf("\n");
+    }
+    free(x);
+    free(y);
+    for(int i =0;i<TAM;i++){
+        free(m[i]);
+    }
+    free(m);
+    return 0;
+}
