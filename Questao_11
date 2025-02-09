@@ -18,18 +18,23 @@ int main() {
         x[i] = rand() % *mx;
         y[i] = rand() % *mx;
     }
-    printf("Vetor X: \n");
+    printf("\n");
+    printf("Vetor Y: \n");
     for(int i =0;i<TAM;i++){
         printf("|%d| ",x[i]);
     }
-    printf("\n");
-    printf("Vetor Y: \n");
+    printf("\nVetor X: \n");
     for(int i =0;i<TAM;i++){
         printf("|%d| ",y[i]);
     }
     printf("\n");
-    printf("Matriz nula total");
+    printf("Matriz total preenchida com as contagens");
     printf("\n");
+    for(int i=0;i<TAM;i++){
+        if(x[i] < TAM && y[i] < TAM){
+            m[x[i]][y[i]]++;
+        }
+    }
     for(int i=0;i<TAM;i++){
         for(int j=0;j<TAM;j++){
             printf("|%d|\t",m[i][j]);
